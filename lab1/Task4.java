@@ -9,7 +9,7 @@ public class Task4 {
             current = 1.0 / (n * n + n - 2);
             result += current;
             n++;
-        } while (current >= limit);
+        } while (current <= limit);
         
         System.out.println("Result: " + result);
     }
