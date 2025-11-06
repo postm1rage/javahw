@@ -1,1 +1,9 @@
 *.class
+*.jar
+.vscode/launch.json
+.vscode/settings.json
+lab5/lib/javafx.properties
+lab5/settings.json
+.vscode/
+lab5/.vscode/
+lab5/lib/
