@@ -1,4 +1,4 @@
-package lab2.task6.exceptions;
+package lab6.geometry2d.exceptions;
 
 public class NegativeSizeException extends IllegalArgumentException {
     public NegativeSizeException(String message) {

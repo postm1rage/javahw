@@ -1,4 +1,4 @@
-package lab2.task6.exceptions;
+package lab6.geometry2d.exceptions;
 
 public class NegativeRadiusException extends IllegalArgumentException {
     public NegativeRadiusException(String message) {

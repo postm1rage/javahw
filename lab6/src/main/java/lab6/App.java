@@ -11,7 +11,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/App.fxml"));
         Scene scene = new Scene(root, 800, 400);
-        stage.setTitle("Lab6 JavaFX Layout");
+        stage.setTitle("Geometry2D Drawer");
         stage.setScene(scene);
         stage.show();
     }

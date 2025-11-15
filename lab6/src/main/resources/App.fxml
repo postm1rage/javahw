@@ -2,28 +2,22 @@
 
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="lab6.AppController">
-
-    <!-- Левый блок с VBox -->
     <left>
         <VBox spacing="10" style="-fx-padding:10;">
             <HBox spacing="5">
-                <Button text="Кнопка 1" onAction="#handleButton1"/>
+                <Button text="Добавить круг" onAction="#addCircle"/>
             </HBox>
             <HBox spacing="5">
-                <Button text="Кнопка 2" onAction="#handleButton2"/>
+                <Button text="Добавить прямоугольник" onAction="#addRectangle"/>
             </HBox>
         </VBox>
     </left>
-
-    <!-- Правый холст -->
     <center>
         <Canvas fx:id="canvas"/>
     </center>
-
 </BorderPane>
