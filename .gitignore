@@ -1,9 +1,22 @@
+# Компилированные классы и артефакты
+*/target/
 *.class
 *.jar
-.vscode/launch.json
-.vscode/settings.json
-lab5/lib/javafx.properties
-lab5/settings.json
+out/
+
+# IDE и настройки
 .vscode/
-lab5/.vscode/
-lab5/lib/
+.idea/
+*.iml
+
+# Логи и временные файлы
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Локальные библиотеки
+/lib/
+
+# Игнорировать старые проекты
+lab5/

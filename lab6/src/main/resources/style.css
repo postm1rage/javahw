@@ -1,0 +1,11 @@
+Button {
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px;
+}
+
+BorderPane {
+    -fx-background-color: #f0f8ff;
+}
