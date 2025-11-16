@@ -14,13 +14,13 @@
     <left>
         <VBox fx:id="buttonPane" spacing="12" styleClass="button-pane" BorderPane.alignment="CENTER">
             <HBox>
-                <Button fx:id="btnAddCircle" text="Добавить круг" onAction="#addCircle" styleClass="fancy-button"/>
+                <Button fx:id="btnAddCircle" text="Add circle" onAction="#addCircle" styleClass="fancy-button"/>
             </HBox>
             <HBox>
-                <Button fx:id="btnAddRect" text="Добавить прямоугольник" onAction="#addRectangle" styleClass="fancy-button"/>
+                <Button fx:id="btnAddRect" text="Add rectangle" onAction="#addRectangle" styleClass="fancy-button"/>
             </HBox>
             <HBox>
-                <Button fx:id="btnClear" text="Очистить" onAction="#clearAll" styleClass="fancy-button secondary"/>
+                <Button fx:id="btnClear" text="Clear" onAction="#clearAll" styleClass="fancy-button secondary"/>
             </HBox>
             <HBox>
                 <Label fx:id="lblCounts" text="Circles: 0    Rectangles: 0    Total: 0" styleClass="counts-label"/>
@@ -34,7 +34,6 @@
         </StackPane>
     </center>
 
-    <!-- статус бар внизу -->
     <bottom>
         <HBox styleClass="status-bar" spacing="10" BorderPane.alignment="CENTER">
             <Label fx:id="lblStatus" text="Ничего не выбрано" />

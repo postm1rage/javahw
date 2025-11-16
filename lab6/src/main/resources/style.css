@@ -1,4 +1,3 @@
-/* ========== Панель слева ========== */
 .button-pane {
     -fx-padding: 18;
     -fx-spacing: 10;
@@ -10,7 +9,6 @@
     -fx-pref-width: 220;
 }
 
-/* Стили для основной и вторичной кнопки */
 .fancy-button {
     -fx-font-family: "Segoe UI", "Arial", sans-serif;
     -fx-font-size: 14px;
@@ -32,7 +30,6 @@
     -fx-background-color: linear-gradient(to bottom right, #9E9E9E, #616161);
 }
 
-/* hover / pressed */
 .fancy-button:hover {
     -fx-background-color: linear-gradient(to bottom right, #77d39a, #3a9a6a);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.32), 10,0,0,3);
@@ -45,7 +42,6 @@
     -fx-translate-y: 0;
 }
 
-/* counts label */
 .counts-label {
     -fx-font-family: "Segoe UI", "Arial", sans-serif;
     -fx-font-size: 12px;
@@ -53,7 +49,6 @@
     -fx-padding: 8 0 0 0;
 }
 
-/* ========== Canvas area ========== */
 .canvas-container {
     /* -fx-padding: 14; */
     /* -fx-background-color: linear-gradient(to bottom right, #ffffff, #f3f6f8); */
@@ -64,12 +59,11 @@
    /* -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 6,0,0,3);   */
 }
 
-/* note: Canvas itself painted by GraphicsContext; style for fallback */
+
 .canvas-container > Canvas {
     -fx-background-color: transparent;
 }
 
-/* статус бар */
 .status-bar {
     -fx-padding: 8 12;
     -fx-background-color: linear-gradient(to top, #ffffff, #f8f8f8);
@@ -80,7 +74,7 @@
     -fx-text-fill: #333;
 }
 
-/* общий для body (чтобы шрифты выглядели четче) */
+
 .root {
     -fx-font-family: "Segoe UI", "Arial", sans-serif;
     -fx-font-size: 13px;
