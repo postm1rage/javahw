@@ -5,8 +5,15 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
-import lab6.geometry2d.*;
-import lab6.geometry2d.exceptions.*;
+import javafx.scene.Scene;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+import lab6.geometry2d.Circle;
+import lab6.geometry2d.Rectangle;
+import lab6.geometry2d.exceptions.NegativeRadiusException;
+import lab6.geometry2d.exceptions.NegativeSizeException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,36 +26,29 @@ public class AppController {
 
     private Random rand = new Random();
 
-    // Храним все фигуры и их графическое представление
     private List<DrawableFigure> figures = new ArrayList<>();
-
     private DrawableFigure selectedFigure = null;
     private double offsetX, offsetY;
 
     @FXML
     public void initialize() {
-        canvas.setWidth(800);
-        canvas.setHeight(400);
         redraw();
 
         canvas.setOnMousePressed(e -> {
-            for (int i = figures.size() - 1; i >= 0; i--) { // идём с конца списка (верхний слой)
+            for (int i = figures.size() - 1; i >= 0; i--) {
                 DrawableFigure f = figures.get(i);
                 if (f.contains(e.getX(), e.getY())) {
                     if (e.getButton() == MouseButton.PRIMARY) {
-                        // захват для перетаскивания
                         selectedFigure = f;
                         offsetX = e.getX() - f.x;
                         offsetY = e.getY() - f.y;
-                        // поднимаем фигуру на верхний слой
                         figures.remove(f);
                         figures.add(f);
                     } else if (e.getButton() == MouseButton.SECONDARY) {
-                        // смена цвета
                         f.color = Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
                         redraw();
                     }
-                    return; // нашли фигуру
+                    return;
                 }
             }
         });
@@ -70,6 +70,7 @@ public class AppController {
         double x = rand.nextDouble() * (canvas.getWidth() - 2 * radius);
         double y = rand.nextDouble() * (canvas.getHeight() - 2 * radius);
         Color color = Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
+
         try {
             Circle c = new Circle(radius);
             figures.add(new DrawableFigure(c, x, y, color));
@@ -86,6 +87,7 @@ public class AppController {
         double x = rand.nextDouble() * (canvas.getWidth() - width);
         double y = rand.nextDouble() * (canvas.getHeight() - height);
         Color color = Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
+
         try {
             Rectangle r = new Rectangle(width, height);
             figures.add(new DrawableFigure(r, x, y, color));
@@ -103,21 +105,20 @@ public class AppController {
         for (DrawableFigure f : figures) {
             gc.setFill(f.color);
             if (f.figure instanceof Circle c) {
-                gc.fillOval(f.x, f.y, c.area() > 0 ? Math.sqrt(c.area() / Math.PI) * 2 : 0,
-                        c.area() > 0 ? Math.sqrt(c.area() / Math.PI) * 2 : 0);
+                double radius = Math.sqrt(c.area() / Math.PI);
+                gc.fillOval(f.x, f.y, radius * 2, radius * 2);
             } else if (f.figure instanceof Rectangle r) {
-                gc.fillRect(f.x, f.y, r.area() / r.perimeter() * 2, r.perimeter() / 2 - r.area() / r.perimeter());
+                gc.fillRect(f.x, f.y, r.getWidth(), r.getHeight());
             }
         }
     }
 
-    // Вспомогательный класс для хранения позиции, цвета и фигуры
     private static class DrawableFigure {
-        Figure figure;
+        lab6.geometry2d.Figure figure;
         double x, y;
         Color color;
 
-        DrawableFigure(Figure figure, double x, double y, Color color) {
+        DrawableFigure(lab6.geometry2d.Figure figure, double x, double y, Color color) {
             this.figure = figure;
             this.x = x;
             this.y = y;
@@ -133,9 +134,7 @@ public class AppController {
                 double dy = py - centerY;
                 return dx * dx + dy * dy <= radius * radius;
             } else if (figure instanceof Rectangle r) {
-                double w = r.area() / r.perimeter() * 2;
-                double h = r.perimeter() / 2 - r.area() / r.perimeter();
-                return px >= x && px <= x + w && py >= y && py <= y + h;
+                return px >= x && px <= x + r.getWidth() && py >= y && py <= y + r.getHeight();
             }
             return false;
         }
