@@ -2,28 +2,43 @@
 
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml"
             fx:controller="lab6.AppController">
 
-    <!-- Левая панель с кнопками -->
     <left>
-        <VBox fx:id="buttonPane" spacing="15" styleClass="button-pane" BorderPane.alignment="CENTER">
+        <VBox fx:id="buttonPane" spacing="12" styleClass="button-pane" BorderPane.alignment="CENTER">
             <HBox>
-                <Button text="Добавить круг" onAction="#addCircle" styleClass="fancy-button"/>
+                <Button fx:id="btnAddCircle" text="Добавить круг" onAction="#addCircle" styleClass="fancy-button"/>
             </HBox>
             <HBox>
-                <Button text="Добавить прямоугольник" onAction="#addRectangle" styleClass="fancy-button"/>
+                <Button fx:id="btnAddRect" text="Добавить прямоугольник" onAction="#addRectangle" styleClass="fancy-button"/>
+            </HBox>
+            <HBox>
+                <Button fx:id="btnClear" text="Очистить" onAction="#clearAll" styleClass="fancy-button secondary"/>
+            </HBox>
+            <HBox>
+                <Label fx:id="lblCounts" text="Circles: 0    Rectangles: 0    Total: 0" styleClass="counts-label"/>
             </HBox>
         </VBox>
     </left>
 
-    <!-- Центральная часть — холст -->
     <center>
-        <Canvas fx:id="canvas" width="800" height="500" styleClass="canvas"/>
+        <StackPane fx:id="canvasPane" styleClass="canvas-container">
+            <Canvas fx:id="canvas" />
+        </StackPane>
     </center>
+
+    <!-- статус бар внизу -->
+    <bottom>
+        <HBox styleClass="status-bar" spacing="10" BorderPane.alignment="CENTER">
+            <Label fx:id="lblStatus" text="Ничего не выбрано" />
+        </HBox>
+    </bottom>
 
 </BorderPane>
