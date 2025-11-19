@@ -36,8 +36,12 @@ public class FigureRenderer {
         if (f.getFigure() instanceof Circle c) {
             double r = c.getRadius();
             gc.fillOval(f.getX() + shadowOffset, f.getY() + shadowOffset, r*2, r*2);
-            gc.setFill(f.getColor());
-            gc.fillOval(f.getX(), f.getY(), r*2, r*2);
+            if (f.getTexture() != null) {
+                gc.drawImage(f.getTexture(), f.getX(), f.getY(), r*2, r*2);
+            } else {
+                gc.setFill(f.getColor());
+                gc.fillOval(f.getX(), f.getY(), r*2, r*2);
+            }
         } else if (f.getFigure() instanceof Rectangle r) {
             gc.fillRect(f.getX() + shadowOffset, f.getY() + shadowOffset, r.getWidth(), r.getHeight());
             gc.setFill(f.getColor());

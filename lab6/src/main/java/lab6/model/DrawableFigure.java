@@ -1,14 +1,19 @@
 package lab6.model;
 
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import lab6.geometry2d.Figure;
 import lab6.geometry2d.Circle;
 import lab6.geometry2d.Rectangle;
 
 public class DrawableFigure {
+    private Image texture;
     private final Figure figure;
     private double x, y;
     private Color color;
+
+    public Image getTexture() { return texture; }
+    public void setTexture(Image texture) { this.texture = texture; }
 
     public DrawableFigure(Figure figure, double x, double y, Color color) {
         this.figure = figure;

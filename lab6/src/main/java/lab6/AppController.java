@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -19,6 +20,7 @@ import lab6.geometry2d.exceptions.NegativeSizeException;
 import java.util.Random;
 
 public class AppController {
+    private Image textureImage;
 
     @FXML private Canvas canvas;
     @FXML private StackPane canvasPane;
@@ -33,6 +35,7 @@ public class AppController {
     @FXML
     public void initialize() {
         renderer = new FigureRenderer(canvas, manager);
+        textureImage = new Image(getClass().getResourceAsStream("/image.png"));
 
         canvas.widthProperty().bind(canvasPane.widthProperty());
         canvas.heightProperty().bind(canvasPane.heightProperty());
@@ -88,6 +91,11 @@ public class AppController {
         try {
             Circle c = new Circle(radius);
             DrawableFigure df = new DrawableFigure(c, x, y, color);
+
+            if (rand.nextDouble() < 0.01) {   // 1%
+                df.setTexture(textureImage);
+            }
+
             manager.add(df);
             updateCounts();
             renderer.redraw();
