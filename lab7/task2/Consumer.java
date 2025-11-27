@@ -12,7 +12,7 @@ public class Consumer extends Thread {
         for (int i = 0; i < ordersToProcess; i++) {
             try {
                 warehouse.fulfillOrder();
-                Thread.sleep(150); // имитация задержки обработки
+                Thread.sleep(150);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
